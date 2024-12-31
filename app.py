@@ -6,6 +6,7 @@ from cryptography.hazmat.primitives.padding import PKCS7
 from cryptography.hazmat.backends import default_backend
 from os import urandom
 import base64
+import os
 
 app = Flask(__name__)
 
@@ -191,4 +192,6 @@ def decode():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.getenv("PORT", 5000))  
+    app.run(host='0.0.0.0', port=port)
+
