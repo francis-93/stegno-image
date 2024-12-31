@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encoding Result - StegoSphere</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(120deg, #1e3c72, #2a5298);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 26px;
+            color: #ffba08;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            font-size: 16px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffba08;
+        }
+
+        .result-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .result-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ffba08, #f48c06, #d00000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .result-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .result-details {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .result-details p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .result-details pre {
+            background-color: #333;
+            padding: 20px;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 8px;
+            word-wrap: break-word;
+        }
+
+        .download-link {
+            margin-top: 20px;
+            background: #ffba08;
+            color: #333;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .download-link:hover {
+            background: #f48c06;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #ccc;
+        }
+
+        footer a {
+            color: #ffba08;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>StegoSphere</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('team') }}">Team</a></li>
+                <li><a href="{{ url_for('embed') }}">Embed</a></li>
+                <li><a href="{{ url_for('extract') }}">Extract</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="result-section">
+        <h2>Encoding Result</h2>
+        <p>Your message has been successfully embedded into the image.</p>
+        
+        <div class="result-details">
+            <p><strong>ChaCha20 Key (Base64 Encoded):</strong></p>
+            <pre>{{ chacha_key }}</pre>
+
+            <p><strong>Encrypted Message (Base64 Encoded):</strong></p>
+            <pre>{{ encrypted_message }}</pre>
+
+            <p><strong>Download the Encoded Image:</strong></p>
+            <a href="{{ url_for('static', filename='encoded_image.png') }}" class="download-link" download>Download Encoded Image</a>
+        </div>
+    </div>
+
+    <footer>
+        Made with ❤️ by the StegoSphere Team. <a href="home.html">Back to Home</a>.
+    </footer>
+</body>
+</html>
