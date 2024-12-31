@@ -31,7 +31,6 @@ dnspython==2.6.1
 eventlet==0.37.0
 executing==2.0.1
 fastjsonschema==2.20.0
-faucet==1.10.11
 filelock==3.15.4
 Flask==3.0.3
 flatbuffers==24.3.25
